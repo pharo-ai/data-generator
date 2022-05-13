@@ -34,6 +34,8 @@ data := generator generateRows: 100 columns: 10.
 
 ## Idea for the future
 
+This is a silly pseudocode. Just to demonstrate the idea.
+
 ```st
 generator := AIDataGenerator new.
 
