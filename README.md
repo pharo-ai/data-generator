@@ -31,3 +31,28 @@ spec
 generator := AIDataGenerator new.
 data := generator generateRows: 100 columns: 10.
 ```
+
+## Idea for the future
+
+```st
+generator := AIDataGenerator new.
+
+generator
+    addIntegerColumnNamed: 'weight'
+    inRangeBetween: 40
+    and: 100
+    distributedUsing: PMNormalDistribution new.
+
+generator
+    addFloatColumnNamed: 'salary'
+    inRangeBetween: 1000
+    and: 5000
+    distributedUsing: (PMExponentialDistribution mu: 2000 sigma: 0.5).
+
+generator
+    addCategoricalColumnNamed: 'gender'
+    withValues: #(male female)
+    distributedUsing: PMUniformDistribution new.
+
+dataFrame := generator generateDatasetWithRows: 10000.
+```
