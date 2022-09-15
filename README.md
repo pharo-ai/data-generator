@@ -4,6 +4,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/pharo-ai/data-generator/badge.svg?branch=master)](https://coveralls.io/github/pharo-ai/data-generator?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/pharo-ai/data-generator/master/LICENSE)
 
+This project is only a draft. It is still incomplete :) We need to continue working on it.
+
 ## How to install it
 
 To install `data-generator`, go to the Playground (Ctrl+OW) in your [Pharo](https://pharo.org/) image and execute the following Metacello script (select it and press Do-it button or Ctrl+D):
