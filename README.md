@@ -2,6 +2,10 @@
 
 [![Build status](https://github.com/pharo-ai/data-generator/workflows/CI/badge.svg)](https://github.com/pharo-ai/data-generator/actions/workflows/test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/pharo-ai/data-generator/badge.svg?branch=master)](https://coveralls.io/github/pharo-ai/data-generator?branch=master)
+[![Pharo version](https://img.shields.io/badge/Pharo-9-%23aac9ff.svg)](https://pharo.org/download)
+[![Pharo version](https://img.shields.io/badge/Pharo-10-%23aac9ff.svg)](https://pharo.org/download)
+[![Pharo version](https://img.shields.io/badge/Pharo-11-%23aac9ff.svg)](https://pharo.org/download)
+[![Pharo version](https://img.shields.io/badge/Pharo-12-%23aac9ff.svg)](https://pharo.org/download)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/pharo-ai/data-generator/master/LICENSE)
 
 This project is only a draft. It is still incomplete :) We need to continue working on it.
