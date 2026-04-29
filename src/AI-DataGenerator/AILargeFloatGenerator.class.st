@@ -1,10 +1,11 @@
 Class {
-	#name : #AILargeFloatGenerator,
-	#superclass : #AIValueGenerator,
-	#category : #'AI-DataGenerator'
+	#name : 'AILargeFloatGenerator',
+	#superclass : 'AIValueGenerator',
+	#category : 'AI-DataGenerator',
+	#package : 'AI-DataGenerator'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AILargeFloatGenerator >> next [
 
 	^ random nextBetween: -100000 and: 100000

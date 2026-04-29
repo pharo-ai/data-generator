@@ -1,10 +1,11 @@
 Class {
-	#name : #AISmallIntegerGenerator,
-	#superclass : #AIValueGenerator,
-	#category : #'AI-DataGenerator'
+	#name : 'AISmallIntegerGenerator',
+	#superclass : 'AIValueGenerator',
+	#category : 'AI-DataGenerator',
+	#package : 'AI-DataGenerator'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AISmallIntegerGenerator >> next [
 
 	^ random nextIntegerBetween: -10 and: 10.
