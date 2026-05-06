@@ -40,7 +40,7 @@ AIMoonsGenerator >> generateMoons: numberOfSamples [
 			         moonsY.
 			         labels }.
 
-	shuffling ifTrue: [ moons shuffleBy: random ].
+	shuffling ifTrue: [ moons shuffleBy: shuffleRandom ].
 
 	^ moons
 ]

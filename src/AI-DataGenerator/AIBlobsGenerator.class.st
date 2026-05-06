@@ -65,14 +65,17 @@ AIBlobsGenerator >> generateBlobs: numberOfSamples [
 			endIndexOfCluster := cumulativeSumOfSamples at: clusterIndex.
 			gaussians := (1 to: numberOfFeatures) collect: [ :featureIndex |
 					             PMGaussianGenerator new
-						             generator: self utils gaussianGenerator;
+						             generator: utils pseudoRandomNumberGenerator;
 						             mean: ((centers at: clusterIndex) at: featureIndex);
 						             standardDeviation: std ].
 			startIndexOfCluster to: endIndexOfCluster do: [ :i |
 					| row |
 					row := (gaussians collect: #next) asOrderedCollection.
-					row add: clusterIndex.
+					row add: clusterIndex. "clusterIndex acts as the label here"
 					blobs rowAt: i put: row ] ].
+
+	shuffling ifTrue: [ blobs shuffleBy: shuffleRandom ].
+
 	^ blobs
 ]
 
@@ -94,7 +97,7 @@ AIBlobsGenerator >> initializeClustersWith: numberOfSamples [
 		ifTrue: [
 				numberOfCenters := centers.
 				centers := (1 to: numberOfCenters) collect: [ :row |
-					           (1 to: numberOfFeatures) collect: [ :col | random nextBetween: centerBox first and: centerBox second ] ] ]
+					           (1 to: numberOfFeatures) collect: [ :col | shuffleRandom nextBetween: centerBox first and: centerBox second ] ] ]
 		ifFalse: [
 				numberOfCenters := centers size.
 				numberOfFeatures := centers anyOne size ].

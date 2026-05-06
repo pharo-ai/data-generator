@@ -2,7 +2,7 @@ Class {
 	#name : 'AIGeneratorUtils',
 	#superclass : 'Object',
 	#instVars : [
-		'gaussianGenerator'
+		'pseudoRandomNumberGenerator'
 	],
 	#category : 'AI-DataGenerator',
 	#package : 'AI-DataGenerator'
@@ -12,52 +12,61 @@ Class {
 AIGeneratorUtils >> applyNoise: noise on: aCollection [
 
 	| gaussian |
-	gaussian := PMGaussianGenerator new standardDeviation: noise.
+	gaussian := PMGaussianGenerator new
+		            generator: self pseudoRandomNumberGenerator;
+		            standardDeviation: noise.
 	^ aCollection collect: [ :each | each + gaussian next ]
 ]
 
-{ #category : 'as yet unclassified' }
-AIGeneratorUtils >> defaultGaussianGenerator [
+{ #category : 'accessing - defaults' }
+AIGeneratorUtils >> defaultPseudoRandomNumberGenerator [
 
-	^ PMParkMillerMinimumRandomGenerator seed: Random new seed
+	^ self defaultPseudoRandomNumberGeneratorWithSeed: Random new seed
+]
+
+{ #category : 'accessing - defaults' }
+AIGeneratorUtils >> defaultPseudoRandomNumberGeneratorWithSeed: aSeed [
+
+	^ PMParkMillerMinimumRandomGenerator seed: aSeed
 ]
 
 { #category : 'accessing' }
-AIGeneratorUtils >> gaussianGenerator [
-
-	^ gaussianGenerator ifNil: [ gaussianGenerator := self defaultGaussianGenerator ]
-]
-
-{ #category : 'accessing' }
-AIGeneratorUtils >> gaussianGenerator: aPseudoRandomNumberGenerator [
-
-	gaussianGenerator := aPseudoRandomNumberGenerator
-]
-
-{ #category : 'accessing' }
-AIGeneratorUtils >> linspace: startInteger stop: stopInteger numberOfPoints: aNumber [
+AIGeneratorUtils >> linspace: startNumber stop: stopNumber numberOfPoints: aNumber [
 
 	^ self
-		  linspace: startInteger
-		  stop: stopInteger
+		  linspace: startNumber
+		  stop: stopNumber
 		  numberOfPoints: aNumber
-		  endpoint: true
+		  includeStop: true
 ]
 
 { #category : 'accessing' }
-AIGeneratorUtils >> linspace: startInteger stop: stopInteger numberOfPoints: aNumber endpoint: aBoolean [
+AIGeneratorUtils >> linspace: startNumber stop: stopNumber numberOfPoints: aNumber includeStop: aBoolean [
+	"If aBoolean is true, the stopNumber will be the last element of the array. If it is false, it will not be included (like an open interval). But in both cases the array will have aNumber elements"
 
-	| div delta step y |
+	| div delta step linspace |
 	div := aBoolean
 		       ifTrue: [ aNumber - 1 ]
 		       ifFalse: [ aNumber ].
-	delta := stopInteger - startInteger.
+	delta := stopNumber - startNumber.
 	step := delta / div.
-	y := 0 to: aNumber - 1.
-	y := y * step.
-	y := y + startInteger.
+	linspace := 0 to: aNumber - 1.
+	linspace := linspace * step.
+	linspace := linspace + startNumber.
 
-	aBoolean & (aNumber > 1) ifTrue: [ y atLast: 1 put: stopInteger ].
+	aBoolean & (aNumber > 1) ifTrue: [ linspace atLast: 1 put: stopNumber ].
 
-	^ y
+	^ linspace
+]
+
+{ #category : 'accessing' }
+AIGeneratorUtils >> pseudoRandomNumberGenerator [
+
+	^ pseudoRandomNumberGenerator ifNil: [ pseudoRandomNumberGenerator := self defaultPseudoRandomNumberGenerator ]
+]
+
+{ #category : 'accessing' }
+AIGeneratorUtils >> pseudoRandomNumberGenerator: aPseudoRandomNumberGenerator [
+
+	pseudoRandomNumberGenerator := aPseudoRandomNumberGenerator
 ]

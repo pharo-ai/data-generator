@@ -3,8 +3,8 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'shuffling',
-		'random',
-		'utils'
+		'utils',
+		'shuffleRandom'
 	],
 	#category : 'AI-DataGenerator',
 	#package : 'AI-DataGenerator'
@@ -20,20 +20,20 @@ AISampleGenerator class >> isAbstract [
 AISampleGenerator >> initialize [ 
 
 	shuffling := true.
-	random := Random new.
+	shuffleRandom := Random new.
 	utils := AIGeneratorUtils new
 ]
 
 { #category : 'accessing' }
-AISampleGenerator >> random [
+AISampleGenerator >> shuffleRandom [
 
-	^ random
+	^ shuffleRandom
 ]
 
 { #category : 'accessing' }
-AISampleGenerator >> random: aRandom [
+AISampleGenerator >> shuffleRandom: aRandom [
 
-	random := aRandom
+	shuffleRandom := aRandom
 ]
 
 { #category : 'accessing' }

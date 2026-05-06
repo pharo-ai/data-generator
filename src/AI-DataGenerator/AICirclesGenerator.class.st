@@ -23,7 +23,7 @@ AICirclesGenerator >> factor: aFloat [
 { #category : 'generating' }
 AICirclesGenerator >> generateCircles: numberOfSamples [
 
-	| numberOfSamplesIn numberOfSamplesOut linspaceOut linspaceIn outerCircleX outerCircleY innerCircleX innerCircleY circlesX circlesY label circles |
+	| numberOfSamplesIn numberOfSamplesOut linspaceOut linspaceIn outerCircleX outerCircleY innerCircleX innerCircleY circlesX circlesY labels circles |
 	numberOfSamplesIn := numberOfSamples // 2.
 	numberOfSamplesOut := numberOfSamples - numberOfSamplesIn.
 
@@ -31,12 +31,12 @@ AICirclesGenerator >> generateCircles: numberOfSamples [
 		                linspace: start
 		                stop: stop
 		                numberOfPoints: numberOfSamplesOut
-		                endpoint: false) asOrderedCollection.
+		                includeStop: false) asOrderedCollection.
 	linspaceIn := (utils
 		               linspace: start
 		               stop: stop
 		               numberOfPoints: numberOfSamplesIn
-		               endpoint: false) asOrderedCollection.
+		               includeStop: false) asOrderedCollection.
 
 	outerCircleX := linspaceOut cos.
 	outerCircleY := linspaceOut sin.
@@ -50,9 +50,9 @@ AICirclesGenerator >> generateCircles: numberOfSamples [
 		            addAll: innerCircleY;
 		            yourself.
 
-	label := (PMVector zeros: numberOfSamplesOut) asOrderedCollection
-		         addAll: (PMVector ones: numberOfSamplesIn);
-		         yourself.
+	labels := (PMVector zeros: numberOfSamplesOut) asOrderedCollection
+		          addAll: (PMVector ones: numberOfSamplesIn);
+		          yourself.
 
 	noise ifNotNil: [
 			circlesX := utils applyNoise: noise on: circlesX.
@@ -61,9 +61,9 @@ AICirclesGenerator >> generateCircles: numberOfSamples [
 	circles := DataFrame withColumns: {
 			           circlesX.
 			           circlesY.
-			           label }.
+			           labels }.
 
-	shuffling ifTrue: [ circles shuffleBy: random ].
+	shuffling ifTrue: [ circles shuffleBy: shuffleRandom ].
 
 	^ circles
 ]
