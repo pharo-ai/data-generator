@@ -1,20 +1,34 @@
 Class {
 	#name : 'AICirclesGeneratorTest',
-	#superclass : 'AISampleGeneratorTest',
+	#superclass : 'AICircularSampleGeneratorTest',
 	#category : 'AI-DataGenerator-Tests',
 	#package : 'AI-DataGenerator-Tests'
 }
 
 { #category : 'accessing' }
-AICirclesGeneratorTest >> generateSample: numberOfSamples [
+AICirclesGeneratorTest >> defaultGenerator [
 
-	^ self generator generateCircles: numberOfSamples
+	^ AICirclesGenerator new
 ]
 
 { #category : 'accessing' }
-AICirclesGeneratorTest >> generator [
+AICirclesGeneratorTest >> expectedNoisedData: numberOfSamples [
 
-	^ generator ifNil: [ generator := AICirclesGenerator new ]
+	| rows |
+	rows := {
+		        { 1.0448204366263738. 0.010511476516221412. 0 }.
+		        { -0.5450623984370465. 0.7821731678395466. 0 }.
+		        { -0.5245077636477555. -0.8200225021107451. 0 }.
+		        { 0.7398643236731197. -0.005509553759605577. 1 }.
+		        { -0.3778443159042865. 0.6518991903838313. 1 }.
+		        { -0.3994264948533713. -0.7334168899555843. 1 } }.
+	^ DataFrame withRows: rows
+]
+
+{ #category : 'accessing' }
+AICirclesGeneratorTest >> generateSample: numberOfSamples [
+
+	^ self generator generateCircles: numberOfSamples
 ]
 
 { #category : 'tests' }
