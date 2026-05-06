@@ -4,14 +4,17 @@ Class {
 	#instVars : [
 		'shuffling',
 		'random',
-		'noise',
-		'start',
-		'stop',
 		'utils'
 	],
 	#category : 'AI-DataGenerator',
 	#package : 'AI-DataGenerator'
 }
+
+{ #category : 'testing' }
+AISampleGenerator class >> isAbstract [
+
+	^ self = AISampleGenerator
+]
 
 { #category : 'initialization' }
 AISampleGenerator >> initialize [ 
@@ -22,27 +25,15 @@ AISampleGenerator >> initialize [
 ]
 
 { #category : 'accessing' }
-AISampleGenerator >> noise [
-
-	^ noise
-]
-
-{ #category : 'accessing' }
-AISampleGenerator >> noise: anObject [
-
-	noise := anObject
-]
-
-{ #category : 'accessing' }
 AISampleGenerator >> random [
 
 	^ random
 ]
 
 { #category : 'accessing' }
-AISampleGenerator >> random: anObject [
+AISampleGenerator >> random: aRandom [
 
-	random := anObject
+	random := aRandom
 ]
 
 { #category : 'accessing' }
@@ -52,37 +43,19 @@ AISampleGenerator >> shuffling [
 ]
 
 { #category : 'accessing' }
-AISampleGenerator >> shuffling: anObject [
+AISampleGenerator >> shuffling: aBoolean [
 
-	shuffling := anObject
-]
-
-{ #category : 'accessing' }
-AISampleGenerator >> startCircle [
-
-	^ start
-]
-
-{ #category : 'accessing' }
-AISampleGenerator >> startCircle: anObject [
-
-	start := anObject
-]
-
-{ #category : 'accessing' }
-AISampleGenerator >> stopCircle [
-
-	^ stop
-]
-
-{ #category : 'accessing' }
-AISampleGenerator >> stopCircle: anObject [
-
-	stop := anObject
+	shuffling := aBoolean
 ]
 
 { #category : 'accessing' }
 AISampleGenerator >> utils [
 
 	^ utils
+]
+
+{ #category : 'accessing' }
+AISampleGenerator >> utils: anObject [
+
+	utils := anObject
 ]

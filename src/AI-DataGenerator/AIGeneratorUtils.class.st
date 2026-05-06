@@ -1,6 +1,9 @@
 Class {
 	#name : 'AIGeneratorUtils',
 	#superclass : 'Object',
+	#instVars : [
+		'gaussianGenerator'
+	],
 	#category : 'AI-DataGenerator',
 	#package : 'AI-DataGenerator'
 }
@@ -11,6 +14,24 @@ AIGeneratorUtils >> applyNoise: noise on: aCollection [
 	| gaussian |
 	gaussian := PMGaussianGenerator new standardDeviation: noise.
 	^ aCollection collect: [ :each | each + gaussian next ]
+]
+
+{ #category : 'as yet unclassified' }
+AIGeneratorUtils >> defaultGaussianGenerator [
+
+	^ PMParkMillerMinimumRandomGenerator seed: Random new seed
+]
+
+{ #category : 'accessing' }
+AIGeneratorUtils >> gaussianGenerator [
+
+	^ gaussianGenerator ifNil: [ gaussianGenerator := self defaultGaussianGenerator ]
+]
+
+{ #category : 'accessing' }
+AIGeneratorUtils >> gaussianGenerator: aPseudoRandomNumberGenerator [
+
+	gaussianGenerator := aPseudoRandomNumberGenerator
 ]
 
 { #category : 'accessing' }

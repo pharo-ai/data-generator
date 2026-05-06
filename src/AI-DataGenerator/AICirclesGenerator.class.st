@@ -1,6 +1,6 @@
 Class {
 	#name : 'AICirclesGenerator',
-	#superclass : 'AISampleGenerator',
+	#superclass : 'AICircularSampleGenerator',
 	#instVars : [
 		'factor'
 	],
@@ -15,9 +15,9 @@ AICirclesGenerator >> factor [
 ]
 
 { #category : 'accessing' }
-AICirclesGenerator >> factor: anObject [
+AICirclesGenerator >> factor: aFloat [
 
-	factor := anObject
+	factor := aFloat
 ]
 
 { #category : 'generating' }
@@ -75,4 +75,21 @@ AICirclesGenerator >> initialize [
 	start := 0.
 	stop := 2 * Float pi.
 	factor := 0.8
+]
+
+{ #category : 'as yet unclassified' }
+AICirclesGenerator >> showCircles: numberOfSamples [
+
+	| chart circles circleIn circleOut plotIn plotOut |
+	circles := self generateCircles: numberOfSamples.
+	circleOut := circles select: [ :each | (each at: 3) = 0 ].
+	circleIn := circles select: [ :each | (each at: 3) = 1 ].
+	plotOut := RSScatterPlot new x: (circleOut columnAt: 1) values y: (circleOut columnAt: 2) values.
+	plotIn := RSScatterPlot new x: (circleIn columnAt: 1) values y: (circleIn columnAt: 2) values.
+	chart := RSCompositeChart new.
+	chart
+		add: plotOut;
+		add: plotIn.
+	chart show.
+	^ circles
 ]

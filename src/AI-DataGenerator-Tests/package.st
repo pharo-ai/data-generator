@@ -1,1 +1,1 @@
-Package { #name : #'AI-DataGenerator-Tests' }
+Package { #name : 'AI-DataGenerator-Tests' }

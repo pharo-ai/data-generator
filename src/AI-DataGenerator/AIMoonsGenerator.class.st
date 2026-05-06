@@ -1,6 +1,6 @@
 Class {
 	#name : 'AIMoonsGenerator',
-	#superclass : 'AISampleGenerator',
+	#superclass : 'AICircularSampleGenerator',
 	#category : 'AI-DataGenerator',
 	#package : 'AI-DataGenerator'
 }
@@ -9,8 +9,8 @@ Class {
 AIMoonsGenerator >> generateMoons: numberOfSamples [
 
 	| numberOfSamplesRight numberOfSamplesLeft linspaceRight linspaceLeft rightMoonX rightMoonY leftMoonX leftMoonY moonsX moonsY labels moons |
-	numberOfSamplesRight := numberOfSamples // 2.
-	numberOfSamplesLeft := numberOfSamples - numberOfSamplesRight.
+	numberOfSamplesLeft := numberOfSamples // 2.
+	numberOfSamplesRight := numberOfSamples - numberOfSamplesLeft.
 
 	linspaceRight := (utils linspace: start stop: stop numberOfPoints: numberOfSamplesRight) asOrderedCollection.
 	linspaceLeft := (utils linspace: start stop: stop numberOfPoints: numberOfSamplesLeft) asOrderedCollection.
@@ -51,4 +51,21 @@ AIMoonsGenerator >> initialize [
 	super initialize.
 	start := 0.
 	stop := Float pi
+]
+
+{ #category : 'as yet unclassified' }
+AIMoonsGenerator >> showMoons: numberOfSamples [
+
+	| moons moonLeft moonRight plotLeft plotRight chart |
+	moons := self generateMoons: numberOfSamples.
+	moonLeft := moons select: [ :each | (each at: 3) = 1 ].
+	moonRight := moons select: [ :each | (each at: 3) = 0 ].
+	plotLeft := RSScatterPlot new x: (moonLeft columnAt: 1) values y: (moonLeft columnAt: 2) values.
+	plotRight := RSScatterPlot new x: (moonRight columnAt: 1) values y: (moonRight columnAt: 2) values.
+	chart := RSCompositeChart new.
+	chart
+		add: plotLeft;
+		add: plotRight.
+	chart show.
+	^ moons
 ]
