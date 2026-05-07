@@ -88,7 +88,7 @@ AIBlobsGenerator >> initialize [
 	centerBox := { -10. 10 }
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 AIBlobsGenerator >> initializeClustersWith: numberOfSamples [
 
 	| numberOfCenters numberOfSamplesPerCenter |
@@ -107,7 +107,7 @@ AIBlobsGenerator >> initializeClustersWith: numberOfSamples [
 	^ numberOfSamplesPerCenter
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 AIBlobsGenerator >> showBlobs: numberOfSamples [
 
 	| chart blobs |

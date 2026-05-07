@@ -77,7 +77,7 @@ AICirclesGenerator >> initialize [
 	factor := 0.8
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 AICirclesGenerator >> showCircles: numberOfSamples [
 
 	| chart circles circleIn circleOut plotIn plotOut |

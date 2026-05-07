@@ -53,7 +53,7 @@ AIMoonsGenerator >> initialize [
 	stop := Float pi
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'rendering' }
 AIMoonsGenerator >> showMoons: numberOfSamples [
 
 	| moons moonLeft moonRight plotLeft plotRight chart |
