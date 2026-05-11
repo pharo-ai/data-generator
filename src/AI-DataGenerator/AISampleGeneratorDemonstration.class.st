@@ -37,16 +37,18 @@ AISampleGeneratorDemonstration >> linkageMethodsComparison [
 	linkages := { #singleLinkage. #averageLinkage. #completeLinkage. #wardsMethod }.
 	canvas := RSCanvas new.
 
-	datasets with: numbersOfClusters do: [ :dataset :numberOfCluster |
+	datasets withIndexDo: [ :dataset :index |
 			linkages do: [ :linkage |
-					| clusty clusters compChart |
+					| numberOfCluster clusty clusters compChart |
+					numberOfCluster := numbersOfClusters at: index.
 					clusty := AIClusterEngine with: dataset.
 					clusty hierarchicalClusteringUsing: linkage.
 					clusters := clusty dendrogram breakInto: numberOfCluster.
-
 					compChart := RSCompositeChart new.
 					clusters do: [ :cluster | compChart add: (RSScatterPlot new x: (cluster collect: #first) y: (cluster collect: #second)) ].
 					compChart colors: NSScale category10.
+					compChart removeAllTicks.
+					index = 1 ifTrue: [ compChart title: linkage ].
 					canvas add: compChart asShape ] ].
 
 	layout := RSGridLayout on: canvas shapes.
