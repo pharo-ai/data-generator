@@ -1,10 +1,11 @@
 Class {
-	#name : #AIDataGenerator,
-	#superclass : #Object,
-	#category : #'AI-DataGenerator'
+	#name : 'AIDataGenerator',
+	#superclass : 'Object',
+	#category : 'AI-DataGenerator',
+	#package : 'AI-DataGenerator'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 AIDataGenerator >> generateRows: aNumberOfRows columns: aNumberOfColumns [
 
 	| data row columnGenerators |
@@ -23,7 +24,7 @@ AIDataGenerator >> generateRows: aNumberOfRows columns: aNumberOfColumns [
 	^ data
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 AIDataGenerator >> generators [
 
 	^ { 

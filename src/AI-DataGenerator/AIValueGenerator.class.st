@@ -1,19 +1,20 @@
 Class {
-	#name : #AIValueGenerator,
-	#superclass : #Object,
+	#name : 'AIValueGenerator',
+	#superclass : 'Object',
 	#instVars : [
 		'random'
 	],
-	#category : #'AI-DataGenerator'
+	#category : 'AI-DataGenerator',
+	#package : 'AI-DataGenerator'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 AIValueGenerator >> initialize [ 
 	super initialize.
 	random := Random new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AIValueGenerator >> next [
 
 	self subclassResponsibility

@@ -1,20 +1,21 @@
 Class {
-	#name : #AIDataGeneratorTest,
-	#superclass : #TestCase,
+	#name : 'AIDataGeneratorTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'generator'
 	],
-	#category : #'AI-DataGenerator-Tests'
+	#category : 'AI-DataGenerator-Tests',
+	#package : 'AI-DataGenerator-Tests'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 AIDataGeneratorTest >> setUp [ 
 
 	super setUp.
 	generator := AIDataGenerator new.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AIDataGeneratorTest >> testGenerateSmallDataset [
 
 	| numberOfRows numberOfColumns data |
