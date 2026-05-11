@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfAIDataGenerator }
+Package { #name : 'BaselineOfAIDataGenerator' }
