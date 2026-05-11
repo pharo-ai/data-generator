@@ -38,6 +38,11 @@ generator := AIDataGenerator new.
 data := generator generateRows: 100 columns: 10.
 ```
 
+## Examples of datasets that can be generated
+
+Circles, moons and blobs, used with hierarchical clustering:
+![](./doc/figures/DatasetsForHierarchicalClustering.png)
+
 ## Idea for the future
 
 This is a silly pseudocode. Just to demonstrate the idea.
